@@ -14,10 +14,27 @@
     flex-direction: column;
 }
 
-.workarea-container
+.chatArea-container
 {
+    display: flex;
     flex: 0.7;
-    background-color: aliceblue;
+    flex-direction: column;
+}
+
+.chatArea-header
+{
+    background-color: orange;
+}
+
+.messages-container
+{
+    background-color: yellow;
+    flex: 1;
+}
+
+.text-input-area
+{
+    background-color: aquamarine;
 }
 
 .sidebar-header
