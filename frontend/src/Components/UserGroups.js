@@ -8,7 +8,7 @@ function UserGroups() {
     return (
         <div className='list-container'>
             <div className='ug-header'>
-                <img src={logo} style={{ height: "2rem", width: "2rem" }} />
+                <img src={logo} style={{ height: "2rem", width: "2rem", marginLeft: "10px" }} />
                 <p className='ug-title'>Online Users</p>
             </div>
             <div className='sidebar-search'>
