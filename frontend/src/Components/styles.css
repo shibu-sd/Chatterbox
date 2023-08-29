@@ -62,11 +62,6 @@
     display: none;
 }
 
-.messages-container::-webkit-scrollbar 
-{
-    display: none;
-}
-
 .text-input-area
 {
     background-color: white;
@@ -203,13 +198,13 @@
 
 .other-message-container .conversation-container:hover
 {
-  background-color: white;
+    background-color: white;
 }
 
 .other-message-container .conversation-lastMessage
 {
-  color: black;
-  font-size:medium;
+    color: black;
+    font-size:medium;
 }
 
 .self-message-container
@@ -236,4 +231,23 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.welcome-logo
+{
+    height: 20vw;
+}
+
+.welcome-container
+{
+    display: flex;
+    flex: 0.7;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+    border-bottom: 5px solid rgb(102, 203, 236);
+    border-radius: 20px;
 }

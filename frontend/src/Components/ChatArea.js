@@ -5,8 +5,7 @@ import { IconButton } from '@mui/material';
 import MessageOthers from './MessageOthers';
 import MessageSelf from './MessageSelf';
 
-function ChatArea() {
-  var props = { name: "Test User 1", timeStamp: "today" };
+function ChatArea({props}) {
   return (
     <div className='chatArea-container'>
       <div className='chatArea-header'>
@@ -25,7 +24,8 @@ function ChatArea() {
         <MessageOthers />
         <MessageSelf />
         <MessageSelf />
-        <MessageOthers />     
+        <MessageOthers />  
+        <MessageOthers />
       </div>
       <div className='text-input-area'>
         <input placeholder='Type a Message' className='search-box' />
