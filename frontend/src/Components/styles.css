@@ -251,3 +251,15 @@
     border-bottom: 5px solid rgb(102, 203, 236);
     border-radius: 20px;
 }
+
+.createGroups-container
+{
+    display: flex;
+    flex : 0.7;
+    align-self: center;
+    padding: 20px 10px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 20px;
+    justify-content: space-between;
+}
