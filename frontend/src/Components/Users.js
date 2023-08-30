@@ -4,7 +4,7 @@ import logo from "../Images/chatterbox-notext.png"
 import { IconButton } from '@mui/material';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
-function UserGroups() {
+function Users() {
     return (
         <div className='list-container'>
             <div className='ug-header'>
@@ -39,4 +39,4 @@ function UserGroups() {
     )
 }
 
-export default UserGroups
+export default Users

@@ -318,5 +318,13 @@
     border-radius: 20px;
     padding: 10px 5px;
     margin: 10px;
-    user-select: none;
+    transition-duration: 0.5s;
+}
+
+.list-item:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+.list-item:active {
+    background-color: white;
 }
