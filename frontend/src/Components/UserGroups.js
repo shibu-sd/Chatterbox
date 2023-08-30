@@ -1,6 +1,6 @@
 import React from 'react'
 import "./styles.css";
-import logo from "../Images/chatterbox-icon.png"
+import logo from "../Images/chatterbox-notext.png"
 import { IconButton } from '@mui/material';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
@@ -8,7 +8,7 @@ function UserGroups() {
     return (
         <div className='list-container'>
             <div className='ug-header'>
-                <img src={logo} style={{ height: "2rem", width: "2rem", marginLeft: "10px" }} />
+                <img src={logo} alt='Logo' style={{ height: "2rem", width: "2rem", marginLeft: "10px" }} />
                 <p className='ug-title'>Online Users</p>
             </div>
             <div className='sidebar-search'>
