@@ -5,6 +5,7 @@ const userRoutes = require("./Routes/userRoutes");
 
 const app = express();
 dotenv.config();
+app.use(express.json());
 
 const connectDB = async () => {
     try {
@@ -22,7 +23,7 @@ app.get("/", (req, res) => {
     res.send("Hi");
 });
 
-app.use("user/", userRoutes);
+app.use("/user", userRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, console.log("Server is Running"));
