@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const userRoutes = require("./Routes/userRoutes");
 
 const app = express();
 dotenv.config();
@@ -21,8 +22,7 @@ app.get("/", (req, res) => {
     res.send("Hi");
 });
 
+app.use("user/", userRoutes);
+
 const PORT = process.env.PORT;
-
-
-
 app.listen(PORT, console.log("Server is Running"));
