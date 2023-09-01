@@ -3,8 +3,8 @@ import themeSliceReducer from "./themeSlice";
 import refreshSidebar from "./refreshSidebar";
 
 export const store = configureStore({
-    reducer: {
-        themeKey: themeSliceReducer,
-        refreshKey: refreshSidebar,
-    },
+  reducer: {
+    themeKey: themeSliceReducer,
+    refreshKey: refreshSidebar,
+  },
 });
