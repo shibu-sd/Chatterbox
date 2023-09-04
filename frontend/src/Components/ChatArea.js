@@ -11,7 +11,10 @@ import axios from "axios";
 import { myContext } from "./MainContainer";
 import io from "socket.io-client";
 
-const ENDPOINT = "http://localhost:8080";
+const dotenv = require("dotenv");
+dotenv.config();
+
+const ENDPOINT = `${process.env.SERVER_URL}`;
 
 var socket, chat;
 
@@ -37,7 +40,7 @@ function ChatArea() {
     };
     axios
       .post(
-        "http://localhost:8080/message/",
+        `${process.env.SERVER_URL}/message/`,
         {
           content: messageContent,
           chatId: chat_id,
@@ -81,7 +84,7 @@ function ChatArea() {
       },
     };
     axios
-      .get("http://localhost:8080/message/" + chat_id, config)
+      .get(`${process.env.SERVER_URL}/message/` + chat_id, config)
       .then(({ data }) => {
         setAllMessages(data);
         setloaded(true);
