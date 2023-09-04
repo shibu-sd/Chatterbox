@@ -9,21 +9,27 @@ import { useParams } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
 import { myContext } from "./MainContainer";
+import io from "socket.io-client";
+
+const ENDPOINT = "http://localhost:8080";
+
+var socket, chat;
 
 function ChatArea() {
   const lightTheme = useSelector((state) => state.themeKey);
   const [messageContent, setMessageContent] = useState("");
-  const messagesEndRef = useRef(null);
   const dyParams = useParams();
   const [chat_id, chat_user] = dyParams._id.split("&");
-
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [allMessages, setAllMessages] = useState([]);
-  
+  const [allMessagesCopy, setAllMessagesCopy] = useState([]);
+
   const { refresh, setRefresh } = useContext(myContext);
   const [loaded, setloaded] = useState(false);
+  const [socketConnectionStatus, setSocketConnectionStatus] = useState([]);
+
   const sendMessage = () => {
-    
+    var data = null;
     const config = {
       headers: {
         Authorization: `Bearer ${userData.data.token}`,
@@ -38,11 +44,35 @@ function ChatArea() {
         },
         config
       )
-      .then(({ data }) => {
+      .then(({ response }) => {
+        data = response;
         console.log("Message Fired");
       });
+      socket.emit("newMessage", data);
   };
+
+  // connection to socket
+  useEffect(() => {
+    socket = io(ENDPOINT);
+    socket.emit("setup", userData);
+    socket.on("connection", () => {
+      setSocketConnectionStatus(!socketConnectionStatus);
+    });
+  }, []);
   
+  // New Messages Received
+  useEffect(() => {
+    socket.on("message received", (newMessage) => {
+      if (!allMessagesCopy || allMessagesCopy._id !== newMessage._id) {
+        // do something
+      }
+      else {
+        setAllMessages([...allMessages], newMessage);
+      }
+    });
+  });
+
+  // Fetching the chats
   useEffect(() => {
     console.log("Users refreshed");
     const config = {
@@ -55,9 +85,10 @@ function ChatArea() {
       .then(({ data }) => {
         setAllMessages(data);
         setloaded(true);
+        socket.emit("join chat", chat_id);
       });
-
-  }, [refresh, chat_id, userData.data.token]);
+      setAllMessagesCopy(allMessages);
+  }, [refresh, chat_id, userData.data.token, allMessages]);
 
   if (!loaded) {
     return (
@@ -122,7 +153,6 @@ function ChatArea() {
               }
             })}
         </div>
-        <div ref={messagesEndRef} className="BOTTOM" />
         <div className={"text-input-area" + (lightTheme ? "" : " dark")}>
           <input
             placeholder="Type a Message"
