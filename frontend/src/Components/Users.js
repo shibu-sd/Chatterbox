@@ -34,7 +34,7 @@ function Users() {
         Authorization: `Bearer ${userData.data.token}`,
       },
     };
-    axios.get(`${process.env.SERVER_URL}/user/fetchUsers`, config).then((data) => {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/user/fetchUsers`, config).then((data) => {
       console.log("UData refreshed in Users panel ");
       setUsers(data.data);
       
@@ -94,7 +94,7 @@ function Users() {
                     },
                   };
                   axios.post(
-                    `${process.env.SERVER_URL}/chat/`,
+                    `${process.env.REACT_APP_SERVER_URL}/chat/`,
                     {
                       userId: user._id,
                     },

@@ -35,7 +35,7 @@ function Groups() {
     };
 
     axios
-      .get(`${process.env.SERVER_URL}/chat/fetchGroups`, config)
+      .get(`${process.env.REACT_APP_SERVER_URL}/chat/fetchGroups`, config)
       .then((response) => {
         console.log("Group Data from API ", response.data);
         SetGroups(response.data);

@@ -40,7 +40,7 @@ function Sidebar() {
       },
     };
 
-    axios.get(`${process.env.SERVER_URL}/chat/`, config).then((response) => {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/chat/`, config).then((response) => {
       console.log("Data refresh in sidebar ", response.data);
       setConversations(response.data);
       

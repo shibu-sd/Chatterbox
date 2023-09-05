@@ -30,7 +30,7 @@ function Login() {
       };
 
       const response = await axios.post(
-        `${process.env.SERVER_URL}/user/login/`,
+        `${process.env.REACT_APP_SERVER_URL}/user/login/`,
         data,
         config
       );
@@ -58,7 +58,7 @@ function Login() {
       };
 
       const response = await axios.post(
-        `${process.env.SERVER_URL}/user/register/`,
+        `${process.env.REACT_APP_SERVER_URL}/user/register/`,
         data,
         config
       );
